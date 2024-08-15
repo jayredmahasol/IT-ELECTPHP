@@ -55,10 +55,9 @@
 
     $celcius = ($value - 32) * 5 / 9;
 
-    
-
     // OUTPUT
-    if ($value !=0) {
+    if ($value !=0)
+    {
         print "Celcius: " . number_format($celcius, 2). "<br>";
         if($celcius <= 0)   
             print("Remark: Freezing Point");
@@ -70,7 +69,6 @@
             print("Remark: Warm");
         if($celcius >= 41 && $celcius <= 99)
             print("Remark: Hot");
-        
     }
     ?>
 </body>

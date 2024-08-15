@@ -69,43 +69,64 @@
         </select><br /><br />
         <button>Compute Salary</button>
     </form><br/><br />
+    
     <?php
-    // Do your code here
-    $salary;
-    $tax;
-    $days = $_GET["days"];
-    $employee = $_GET["employee"];
-    $status = $_GET["status"];
+    // Do your code here!
+    $salary = 0;
+    $tax = 0;
 
-    // Employee
-    if($employee == "Regular")
-        $salary = 500;
-    if($employee == "Probationary")
-        $salary = 400;
-    if($employee == "Casual")
-        $salary = 300;
-        
-    // Civil Status
-    if($status == "Single")
-        $tax = .12;
-    if($status == "Married")
-        $tax = .10;
-    if($status == "Widow")
-        $tax = .7;
+    if (isset($_GET["days"]) && isset($_GET["employee"]) && isset($_GET["status"])) {
+        $days = (int)$_GET["days"];
+        $employee = $_GET["employee"];
+        $status = $_GET["status"];
+    
+    // determine employe type
+    switch ($employee) {
+        case "Regular":
+            $salary = 500;
+            break;
+        case "Probationary":
+            $salary = 400;
+            break;
+        case "Casual":
+            $salary = 300;
+            break;
+        default:
+            $salary = 0;
+            break;
+    }
+    // determine civil status 
+    switch ($status) {
+        case "Single":
+            $tax = 0.12;
+            break;
+        case "Married":
+            $tax = 0.10;
+            break;
+        case "Widow":
+            $tax = 0.07;
+            break;
+        default:
+            $tax = 0.00;
+            break;
+    }
 
-    // OUTPUT
+    // computation
     $gross = $salary * $days;
     $deduction = $tax * $gross;
     $net = $gross - $deduction;
 
-
-
-
-    echo "Gross Salary:" . $gross ."<br>";
-    echo "Tax: "  . $tax . "% <br>";
+    // Output results
+    echo "Gross Salary: " . number_format($gross, 2) . "<br>";
+    echo "Tax Rate: " . ($tax * 100) . "% <br>";
     echo "Deduction: " . number_format($deduction, 2) . "<br>";
     echo "Net Salary: " . number_format($net, 2);
-    ?>
+    }
+    else
+    {
+        echo "Please provide days, employee type, and status.";
+    }
+?>
 
 
 </body>
