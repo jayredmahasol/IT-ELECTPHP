@@ -21,21 +21,30 @@
         <br> 
         <?php print "Ending number: $num2"; ?> <br> <?php
 
-        
+        function isPrime($number) {
+
+            if($number < 2)
+                return false;
+            for($i =2; $i <= sqrt($number); $i++){
+                if($number % $i ==0)
+                    return false;
+            }
+            return true;
+        }        
+
         if($num1 <= $num2)
         {
-            ?> <br> <?php
-            //Display Odd Numbers
-            print "Odd numbers: ";
+            
+            print "<br>Odd numbers: ";
             for($i = $num1; $i <= $num2; $i++)
             {
                 if($i % 2 != 0)
                     print "$i " ;
             } 
-            ?><br><br><?php
+            
 
-            //Display Even Numbers
-            print "Even numbers: ";
+
+            print "<br><br>Even numbers: ";
             for($i = $num1; $i <= $num2; $i++)
             {
                 if($i % 2 == 0)
@@ -43,7 +52,7 @@
             }
             ?><br><br><?php
 
-            //Display Divisible by 3 Numbers
+
             print "Divisible by 3 Numbers: ";
             for($i = $num1; $i <= $num2; $i++)
             {
@@ -51,8 +60,7 @@
                     print "$i " ;
             }
             ?><br><br><?php
-            
-            //Display Divible by 5 Numbers
+
             print "Divisible by 5 Numbers: ";
             for($i = $num1; $i <= $num2; $i++)
             {
@@ -61,17 +69,15 @@
             }
             ?><br><br><?php
 
-            //Display Prime Numbers
             print "Prime numbers: ";
-            for ($i = $num1; $i <= $num2; $i--) {
+            for ($i = $num1; $i <= $num2; $i++) {
                 if (isPrime($i))
                     print "$i ";
             }
         }
         elseif($num1 >= $num2)
         {
-            //Display Odd Numbers
-            print "Odd numbers: ";
+            print "<br>Odd numbers: ";
             for($i = $num1; $i >= $num2; $i--)
             {
                 if($i % 2 != 0)
@@ -79,7 +85,6 @@
             } 
             ?><br><br><?php
             
-            //Display Even Numbers
             print "Even numbers: ";
             for($i = $num1; $i >= $num2; $i--)
             {
@@ -88,7 +93,6 @@
             }
             ?><br><br><?php
 
-            //Display Divisible by 3 Numbers
             print "Divisible by 3 Numbers: ";
             for($i = $num1; $i >= $num2; $i--)
             {
@@ -97,7 +101,6 @@
             }
             ?><br><br><?php
 
-            //Display Divible by 5 Numbers
             print "Divisible by 5 Numbers: ";
             for($i = $num1   ; $i >= $num2; $i--)
             {
@@ -105,8 +108,7 @@
                     print "$i " ;
             }
 
-            //Display Prime Numbers
-            print "Prime numbers: ";
+            print "<br><br>Prime numbers: ";
             for ($i = $num1; $i >= $num2; $i--) {
                 if (isPrime($i))
                     print "$i ";
